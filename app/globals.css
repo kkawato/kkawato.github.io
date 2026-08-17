@@ -659,6 +659,11 @@ main,
   line-height: 1.35;
 }
 
+.presentation-list p a {
+  font-weight: 600;
+  text-decoration-color: var(--accent);
+}
+
 .presentation-list span {
   color: var(--ink-soft);
   font-size: 0.72rem;

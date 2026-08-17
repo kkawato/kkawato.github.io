@@ -6,6 +6,12 @@ const siteUrl =
 
 const presentations = [
   {
+    date: "Sep. 7, 2026",
+    title: "2026年度統計関連学会連合大会",
+    note: "コンペティション(1) · 14:00–14:20",
+    href: "https://pub.confit.atlas.jp/ja/event/jfssa2026/session/t2K1Gt85",
+  },
+  {
     date: "Aug. 2026",
     title: "Summer Workshop on Economic Theory",
     note: "Scheduled",
@@ -336,7 +342,19 @@ export default function Home() {
                   <li key={`${presentation.date}-${presentation.title}`}>
                     <time>{presentation.date}</time>
                     <div>
-                      <p>{presentation.title}</p>
+                      <p>
+                        {presentation.href ? (
+                          <a
+                            href={presentation.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {presentation.title} <Arrow />
+                          </a>
+                        ) : (
+                          presentation.title
+                        )}
+                      </p>
                       {presentation.note ? <span>{presentation.note}</span> : null}
                     </div>
                   </li>
@@ -405,10 +423,24 @@ export default function Home() {
                       Mathematical Sciences and Physics
                     </strong>
                     <span>The University of Tokyo · 2025 — Present</span>
+                    <a
+                      href="https://www.ms.u-tokyo.ac.jp/wings-fmsp/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Program website <Arrow />
+                    </a>
                   </li>
                   <li>
                     <strong>Miura Foundation Scholarship</strong>
                     <span>2020 — 2024</span>
+                    <a
+                      href="https://www.miurazaidan.or.jp/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Foundation website <Arrow />
+                    </a>
                   </li>
                 </ul>
               </article>

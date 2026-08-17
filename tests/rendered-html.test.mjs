@@ -34,6 +34,10 @@ test("server-renders the finished academic homepage", async () => {
   assert.match(html, /Graduate School of Economics/);
   assert.match(html, /Balancing Weights for Causal Mediation Analysis/);
   assert.match(html, /Prior-Free Sample Size Design for Test-and-Roll Experiments/);
+  assert.match(html, /2026年度統計関連学会連合大会/);
+  assert.match(html, /https:\/\/pub\.confit\.atlas\.jp\/ja\/event\/jfssa2026\/session\/t2K1Gt85/);
+  assert.match(html, /https:\/\/www\.miurazaidan\.or\.jp\//);
+  assert.match(html, /https:\/\/www\.ms\.u-tokyo\.ac\.jp\/wings-fmsp\//);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /"@type":"Person"/);
   assert.match(html, /og:image/i);
