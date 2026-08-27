@@ -8,7 +8,7 @@ const presentations = [
   {
     date: "Sep. 7, 2026",
     title: "2026年度統計関連学会連合大会",
-    note: "コンペティション(1) · 14:00–14:20",
+    note: "Scheduled",
     href: "https://pub.confit.atlas.jp/ja/event/jfssa2026/session/t2K1Gt85",
   },
   {
@@ -148,7 +148,7 @@ export default function Home() {
 
             <section id="papers">
               <h2>Working Papers</h2>
-              <ol className="plain-publication-list">
+              <ol className="plain-publication-list numbered-list">
                 <li>
                   <p>
                     Kentaro Kawato. “Balancing Weights for Causal Mediation
@@ -201,7 +201,7 @@ export default function Home() {
 
             <section id="work-in-progress">
               <h2>Work in Progress</h2>
-              <ul>
+              <ol className="numbered-list">
                 <li>
                   Nonlinear Difference in Difference for Manifold Data (with
                   Daisuke Kurisu)
@@ -210,12 +210,12 @@ export default function Home() {
                   Adaptive Experiment for Estimating Long-term Treatment
                   Effect
                 </li>
-              </ul>
+              </ol>
             </section>
 
             <section id="presentations">
               <h2>Presentations</h2>
-              <ul>
+              <ol className="numbered-list">
                 <li>
                   <a
                     href="https://pub.confit.atlas.jp/ja/event/jfssa2026/session/t2K1Gt85"
@@ -224,8 +224,7 @@ export default function Home() {
                   >
                     2026年度統計関連学会連合大会
                   </a>
-                  , September 7, 2026. Scheduled (コンペティション(1),
-                  14:00–14:20).
+                  , September 7, 2026. Scheduled.
                 </li>
                 <li>
                   Summer Workshop on Economic Theory, August 2026. Scheduled.
@@ -258,22 +257,22 @@ export default function Home() {
                     統計サマーセミナー
                   </span>
                 </li>
-              </ul>
+              </ol>
             </section>
 
             <section id="teaching">
               <h2>Teaching</h2>
-              <ul>
+              <ol className="numbered-list">
                 <li>
                   Econometrics I (Undergraduate), The University of Tokyo, Fall
                   2025
                 </li>
-              </ul>
+              </ol>
             </section>
 
             <section id="awards">
               <h2>Awards</h2>
-              <ul>
+              <ol className="numbered-list">
                 <li>
                   Best Presentation Award, 20th Spring Meeting of the Japan
                   Statistical Society, Poster Session, March 2026.
@@ -308,12 +307,12 @@ export default function Home() {
                   </a>
                   ]
                 </li>
-              </ul>
+              </ol>
             </section>
 
             <section id="grants">
               <h2>Grants</h2>
-              <ul>
+              <ol className="numbered-list">
                 <li>
                   <a
                     href="https://www.ms.u-tokyo.ac.jp/wings-fmsp/"
@@ -341,7 +340,7 @@ export default function Home() {
                     公益財団法人三浦財団
                   </span>
                 </li>
-              </ul>
+              </ol>
             </section>
 
             <section id="contact">

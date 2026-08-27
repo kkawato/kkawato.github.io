@@ -112,7 +112,7 @@
         {
           "type": "regex_present",
           "path": "app/page.tsx",
-          "regex": "Education[\\s\\S]*Working Papers[\\s\\S]*Work in Progress[\\s\\S]*Presentations[\\s\\S]*Teaching[\\s\\S]*Awards[\\s\\S]*Grants[\\s\\S]*Contact",
+          "pattern": "Education[\\s\\S]*Working Papers[\\s\\S]*Work in Progress[\\s\\S]*Presentations[\\s\\S]*Teaching[\\s\\S]*Awards[\\s\\S]*Grants[\\s\\S]*Contact",
           "min_count": 1
         },
         {
@@ -120,6 +120,49 @@
           "path": "app/page.tsx",
           "literal": "kawato-kentaro380@g.ecc.u-tokyo.ac.jp",
           "min_count": 1
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-remove-jfssa-slot",
+      "instruction_id": "request-20260827-remove-jfssa-slot",
+      "status": "active",
+      "description": "Keep the JFSSA presentation event, date, scheduled status, and link, but omit the parenthetical session label and time.",
+      "targets": [
+        "app/page.tsx"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "literal_absent",
+          "path": "app/page.tsx",
+          "literal": "コンペティション(1)"
+        },
+        {
+          "type": "literal_absent",
+          "path": "app/page.tsx",
+          "literal": "14:00–14:20"
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-number-academic-lists",
+      "instruction_id": "request-20260827-number-lists",
+      "status": "active",
+      "description": "Keep Working Papers, Work in Progress, Presentations, Teaching, Awards, and Grants as numbered lists while Education remains bulleted.",
+      "targets": [
+        "app/page.tsx"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "regex_present",
+          "path": "app/page.tsx",
+          "pattern": "<ol className=\"(?:plain-publication-list )?numbered-list\">",
+          "min_count": 6,
+          "max_count": 6
         }
       ]
     }

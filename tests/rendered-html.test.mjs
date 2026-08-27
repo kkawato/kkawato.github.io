@@ -58,6 +58,8 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /https:\/\/www\.e\.u-tokyo\.ac\.jp\/news\/2026\/20260722Awards\.html/);
   assert.match(html, /https:\/\/www\.miurazaidan\.or\.jp\//);
   assert.match(html, /https:\/\/www\.ms\.u-tokyo\.ac\.jp\/wings-fmsp\//);
+  assert.match(html, /<ol class="plain-publication-list numbered-list">/);
+  assert.doesNotMatch(html, /コンペティション\(1\)|14:00(?:–|&ndash;)14:20/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /"@type":"Person"/);
   assert.match(html, /og:image/i);
@@ -80,6 +82,12 @@ test("keeps SEO and image assets in the committed project", async () => {
 
   assert.match(page, /https:\/\/schema\.org/);
   assert.match(page, /"@type": "Person"/);
+  assert.equal(
+    page.match(/<ol className="(?:plain-publication-list )?numbered-list">/g)
+      ?.length,
+    6,
+  );
+  assert.doesNotMatch(page, /コンペティション\(1\)|14:00–14:20/);
   assert.match(layout, /robots:/);
   assert.match(layout, /canonical:/);
   assert.match(layout, /summary_large_image/);
