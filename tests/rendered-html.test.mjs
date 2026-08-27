@@ -53,6 +53,32 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /https:\/\/arxiv\.org\/abs\/2512\.09337/);
   assert.match(html, /https:\/\/arxiv\.org\/abs\/2605\.02414v1/);
   assert.match(html, /https:\/\/pub\.confit\.atlas\.jp\/ja\/event\/jfssa2026\/session\/t2K1Gt85/);
+  for (const eventUrl of [
+    "https://sites.google.com/view/swetotaruhokudai/swet2026/%E8%A8%88%E9%87%8F%E7%B5%8C%E6%B8%88%E5%AD%A6",
+    "https://conf.xmu.edu.cn/summerschool2026/Program.htm",
+    "https://sites.google.com/g.ecc.u-tokyo.ac.jp/seta2026",
+    "https://jss2026spring.ywstat.jp/",
+    "https://sites.google.com/view/japan-econometrics/",
+    "https://www.cirje.e.u-tokyo.ac.jp/research/conf/con2025.html",
+    "https://sites.google.com/g.ecc.u-tokyo.ac.jp/ysg2025",
+  ]) {
+    assert.ok(html.includes(eventUrl), `missing presentation link: ${eventUrl}`);
+  }
+  for (const location of [
+    "Japan, Yokohama",
+    "Japan, Otaru",
+    "China, Beijing",
+    "Japan, Tokyo",
+    "Japan, Kyoto",
+    "Japan, Miyazaki",
+    "Japan, Kotohira",
+  ]) {
+    assert.match(html, new RegExp(location));
+  }
+  assert.doesNotMatch(
+    html,
+    /Summer Workshop on Economic Theory[\s\S]{0,200}Scheduled/,
+  );
   assert.match(html, /https:\/\/www\.jss\.gr\.jp\/wp-content\/uploads\/20th-shunki-houkoku_0313\.pdf/);
   assert.match(html, /https:\/\/conf\.xmu\.edu\.cn\/summerschool2026\/Program\.htm/);
   assert.match(html, /https:\/\/www\.e\.u-tokyo\.ac\.jp\/news\/2026\/20260722Awards\.html/);
@@ -89,6 +115,22 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
     6,
   );
   assert.doesNotMatch(page, /コンペティション\(1\)|14:00–14:20/);
+  const swetStart = page.indexOf('title: "Summer Workshop on Economic Theory"');
+  const swetEnd = page.indexOf("},", swetStart);
+  assert.ok(swetStart >= 0 && swetEnd > swetStart);
+  assert.doesNotMatch(page.slice(swetStart, swetEnd), /Scheduled/);
+
+  const secondPaperStart = page.indexOf(
+    "Kentaro Kawato and Shosei Sakaguchi.",
+  );
+  const secondPaperEnd = page.indexOf("</li>", secondPaperStart);
+  const secondPaper = page.slice(secondPaperStart, secondPaperEnd);
+  assert.ok(secondPaper.includes("<strong>Keywords:</strong>"));
+  assert.ok(secondPaper.includes("<strong>Awards:</strong>"));
+  assert.ok(
+    secondPaper.indexOf("<strong>Keywords:</strong>") <
+      secondPaper.indexOf("<strong>Awards:</strong>"),
+  );
   assert.match(
     styles,
     /\.plain-content ol\.numbered-list\s*\{[^}]*list-style-type:\s*decimal;/s,

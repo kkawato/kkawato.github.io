@@ -173,6 +173,76 @@
           "max_count": 1
         }
       ]
+    },
+    {
+      "decision_id": "decision-20260827-remove-swet-scheduled",
+      "instruction_id": "request-20260827-remove-swet-scheduled",
+      "status": "active",
+      "description": "Keep the Summer Workshop on Economic Theory presentation but do not label it as Scheduled.",
+      "targets": [
+        "app/page.tsx"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "regex_absent",
+          "path": "app/page.tsx",
+          "pattern": "Summer Workshop on Economic Theory[\\s\\S]{0,200}Scheduled"
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-presentation-links-locations",
+      "instruction_id": "request-20260827-add-presentation-links-locations",
+      "status": "active",
+      "description": "Preserve authoritative links and country-city locations for all eight presentation entries, including the verified September 2025 date for LMU-Todai.",
+      "targets": [
+        "app/page.tsx",
+        "tests/rendered-html.test.mjs"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "regex_present",
+          "path": "app/page.tsx",
+          "pattern": "Japan, Yokohama[\\s\\S]*Japan, Otaru[\\s\\S]*China, Beijing[\\s\\S]*Japan, Tokyo[\\s\\S]*Japan, Kyoto[\\s\\S]*Japan, Miyazaki[\\s\\S]*September 2025[\\s\\S]*Japan, Tokyo[\\s\\S]*Japan, Kotohira",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "https://sites.google.com/view/swetotaruhokudai/swet2026/%E8%A8%88%E9%87%8F%E7%B5%8C%E6%B8%88%E5%AD%A6",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "https://www.cirje.e.u-tokyo.ac.jp/research/conf/con2025.html",
+          "min_count": 1
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-working-paper-order",
+      "instruction_id": "request-20260827-working-paper-order",
+      "status": "active",
+      "description": "Keep Keywords before Awards in the second Working Papers entry.",
+      "targets": [
+        "app/page.tsx",
+        "tests/rendered-html.test.mjs"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "regex_present",
+          "path": "app/page.tsx",
+          "pattern": "Kentaro Kawato and Shosei Sakaguchi[\\s\\S]{0,1200}<strong>Keywords:</strong>[\\s\\S]{0,600}<strong>Awards:</strong>",
+          "min_count": 1
+        }
+      ]
     }
   ]
 }

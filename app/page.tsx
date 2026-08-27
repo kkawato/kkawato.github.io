@@ -9,37 +9,51 @@ const presentations = [
     date: "Sep. 7, 2026",
     title: "2026年度統計関連学会連合大会",
     note: "Scheduled",
+    location: "Japan, Yokohama",
     href: "https://pub.confit.atlas.jp/ja/event/jfssa2026/session/t2K1Gt85",
   },
   {
     date: "Aug. 2026",
     title: "Summer Workshop on Economic Theory",
-    note: "Scheduled",
+    location: "Japan, Otaru",
+    href: "https://sites.google.com/view/swetotaruhokudai/swet2026/%E8%A8%88%E9%87%8F%E7%B5%8C%E6%B8%88%E5%AD%A6",
   },
   {
     date: "Jul. 2026",
     title: "2026 Asian Summer School in Econometrics and Statistics",
+    location: "China, Beijing",
+    href: "https://conf.xmu.edu.cn/summerschool2026/Program.htm",
   },
   {
     date: "Jun. 2026",
     title: "20th International Symposium on Econometric Theory and Applications",
+    location: "Japan, Tokyo",
+    href: "https://sites.google.com/g.ecc.u-tokyo.ac.jp/seta2026",
   },
   {
     date: "Mar. 2026",
     title: "20th Spring Meeting of the Japan Statistical Society",
     note: "Poster Session",
+    location: "Japan, Kyoto",
+    href: "https://jss2026spring.ywstat.jp/",
   },
   {
     date: "Jan. 2026",
     title: "Kansai Econometrics Workshop",
+    location: "Japan, Miyazaki",
+    href: "https://sites.google.com/view/japan-econometrics/",
   },
   {
-    date: "Dec. 2025",
+    date: "Sep. 2025",
     title: "LMU–Todai Econometrics Workshop",
+    location: "Japan, Tokyo",
+    href: "https://www.cirje.e.u-tokyo.ac.jp/research/conf/con2025.html",
   },
   {
     date: "Aug. 2025",
     title: "Summer Seminar on Statistics",
+    location: "Japan, Kotohira",
+    href: "https://sites.google.com/g.ecc.u-tokyo.ac.jp/ysg2025",
   },
 ];
 
@@ -184,16 +198,16 @@ export default function Home() {
                     </a>
                     ]
                   </p>
+                  <p className="plain-keywords">
+                    <strong>Keywords:</strong> experimental design;
+                    test-and-roll experiments; sample-size design; minimax
+                    regret; exploration-exploitation tradeoff
+                  </p>
                   <p>
                     <strong>Awards:</strong> Best Presentation Award, 20th
                     Spring Meeting of the Japan Statistical Society; Best Paper
                     Award, 2026 Asian Summer School in Econometrics and
                     Statistics.
-                  </p>
-                  <p className="plain-keywords">
-                    <strong>Keywords:</strong> experimental design;
-                    test-and-roll experiments; sample-size design; minimax
-                    regret; exploration-exploitation tradeoff
                   </p>
                 </li>
               </ol>
@@ -224,35 +238,84 @@ export default function Home() {
                   >
                     2026年度統計関連学会連合大会
                   </a>
-                  , September 7, 2026. Scheduled.
+                  , September 7, 2026. Japan, Yokohama. Scheduled.
                 </li>
                 <li>
-                  Summer Workshop on Economic Theory, August 2026. Scheduled.
+                  <a
+                    href="https://sites.google.com/view/swetotaruhokudai/swet2026/%E8%A8%88%E9%87%8F%E7%B5%8C%E6%B8%88%E5%AD%A6"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Summer Workshop on Economic Theory
+                  </a>
+                  , August 2026. Japan, Otaru.
                 </li>
                 <li>
-                  2026 Asian Summer School in Econometrics and Statistics, July
-                  2026.
+                  <a
+                    href="https://conf.xmu.edu.cn/summerschool2026/Program.htm"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    2026 Asian Summer School in Econometrics and Statistics
+                  </a>
+                  , July 2026. China, Beijing.
                 </li>
                 <li>
-                  The 20th International Symposium on Econometric Theory and
-                  Applications, June 2026.
+                  <a
+                    href="https://sites.google.com/g.ecc.u-tokyo.ac.jp/seta2026"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    The 20th International Symposium on Econometric Theory and
+                    Applications
+                  </a>
+                  , June 2026. Japan, Tokyo.
                 </li>
                 <li>
-                  20th Spring Meeting of the Japan Statistical Society, Poster
-                  Session, March 2026.
+                  <a
+                    href="https://jss2026spring.ywstat.jp/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    20th Spring Meeting of the Japan Statistical Society
+                  </a>
+                  , Poster Session, March 2026. Japan, Kyoto.
                   <span className="plain-translation" lang="ja">
                     第二十回日本統計学会春季集会ポスターセッション
                   </span>
                 </li>
                 <li>
-                  Kansai Econometrics Workshop, January 2026.
+                  <a
+                    href="https://sites.google.com/view/japan-econometrics/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Kansai Econometrics Workshop
+                  </a>
+                  , January 2026. Japan, Miyazaki.
                   <span className="plain-translation" lang="ja">
                     関西計量経済学研究会
                   </span>
                 </li>
-                <li>LMU-Todai Econometrics Workshop, December 2025.</li>
                 <li>
-                  Summer Seminar on Statistics, August 2025.
+                  <a
+                    href="https://www.cirje.e.u-tokyo.ac.jp/research/conf/con2025.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    LMU-Todai Econometrics Workshop
+                  </a>
+                  , September 2025. Japan, Tokyo.
+                </li>
+                <li>
+                  <a
+                    href="https://sites.google.com/g.ecc.u-tokyo.ac.jp/ysg2025"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Summer Seminar on Statistics
+                  </a>
+                  , August 2025. Japan, Kotohira.
                   <span className="plain-translation" lang="ja">
                     統計サマーセミナー
                   </span>
@@ -639,6 +702,7 @@ export function LegacyHomepage() {
                         )}
                       </p>
                       {presentation.note ? <span>{presentation.note}</span> : null}
+                      <span>{presentation.location}</span>
                     </div>
                   </li>
                 ))}
