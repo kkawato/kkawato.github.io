@@ -88,6 +88,290 @@ function Arrow() {
 export default function Home() {
   return (
     <>
+      <a className="plain-skip-link" href="#main-content">
+        Skip to content
+      </a>
+
+      <header className="plain-header">
+        <nav className="plain-nav" aria-label="Primary navigation">
+          <a className="plain-site-name" href="#about">
+            Kentaro Kawato
+          </a>
+          <a href="#papers">Papers</a>
+          <a href="#presentations">Presentations</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main id="main-content" className="plain-page">
+        <div className="plain-profile-layout">
+          <aside className="plain-profile-photo">
+            <Image
+              src="/kentaro-kawato.jpg"
+              alt="Kentaro Kawato"
+              width={240}
+              height={240}
+              priority
+              sizes="(max-width: 720px) 180px, 210px"
+            />
+          </aside>
+
+          <article className="plain-content">
+            <section id="about" className="plain-intro">
+              <h1>Kentaro Kawato</h1>
+              <p className="plain-japanese-name" lang="ja">
+                <strong>川戸 健太竜</strong>
+              </p>
+              <p>M.A. Student in Economics (Statistics Course)</p>
+              <p>
+                Graduate School of Economics, The University of Tokyo, Tokyo,
+                Japan
+              </p>
+              <p>
+                <strong>Research Interests:</strong> Econometrics, Statistics
+              </p>
+            </section>
+
+            <section id="education">
+              <h2>Education</h2>
+              <ul>
+                <li>
+                  B.A. in Social Sciences, The University of Tokyo, Tokyo,
+                  Japan (April 2020 – March 2025)
+                </li>
+                <li>
+                  Exchange Program: University of Manchester, Manchester, UK
+                  (September 2022 – June 2023)
+                </li>
+              </ul>
+            </section>
+
+            <section id="papers">
+              <h2>Working Papers</h2>
+              <ol className="plain-publication-list">
+                <li>
+                  <p>
+                    Kentaro Kawato. “Balancing Weights for Causal Mediation
+                    Analysis.” <em>arXiv preprint arXiv:2512.09337</em> (2025).{" "}
+                    [
+                    <a
+                      href="https://arxiv.org/abs/2512.09337"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      link
+                    </a>
+                    ]
+                  </p>
+                  <p className="plain-keywords">
+                    <strong>Keywords:</strong> causal mediation analysis;
+                    natural direct and indirect effects; propensity score
+                    instability; balancing weights; finite-sample covariate
+                    imbalance
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Kentaro Kawato and Shosei Sakaguchi. “Prior-Free Sample
+                    Size Design for Test-and-Roll Experiments.”{" "}
+                    <em>arXiv preprint arXiv:2605.02414</em> (2026). [
+                    <a
+                      href="https://arxiv.org/abs/2605.02414v1"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      link
+                    </a>
+                    ]
+                  </p>
+                  <p>
+                    <strong>Awards:</strong> Best Presentation Award, 20th
+                    Spring Meeting of the Japan Statistical Society; Best Paper
+                    Award, 2026 Asian Summer School in Econometrics and
+                    Statistics.
+                  </p>
+                  <p className="plain-keywords">
+                    <strong>Keywords:</strong> experimental design;
+                    test-and-roll experiments; sample-size design; minimax
+                    regret; exploration-exploitation tradeoff
+                  </p>
+                </li>
+              </ol>
+            </section>
+
+            <section id="work-in-progress">
+              <h2>Work in Progress</h2>
+              <ul>
+                <li>
+                  Nonlinear Difference in Difference for Manifold Data (with
+                  Daisuke Kurisu)
+                </li>
+                <li>
+                  Adaptive Experiment for Estimating Long-term Treatment
+                  Effect
+                </li>
+              </ul>
+            </section>
+
+            <section id="presentations">
+              <h2>Presentations</h2>
+              <ul>
+                <li>
+                  <a
+                    href="https://pub.confit.atlas.jp/ja/event/jfssa2026/session/t2K1Gt85"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    2026年度統計関連学会連合大会
+                  </a>
+                  , September 7, 2026. Scheduled (コンペティション(1),
+                  14:00–14:20).
+                </li>
+                <li>
+                  Summer Workshop on Economic Theory, August 2026. Scheduled.
+                </li>
+                <li>
+                  2026 Asian Summer School in Econometrics and Statistics, July
+                  2026.
+                </li>
+                <li>
+                  The 20th International Symposium on Econometric Theory and
+                  Applications, June 2026.
+                </li>
+                <li>
+                  20th Spring Meeting of the Japan Statistical Society, Poster
+                  Session, March 2026.
+                  <span className="plain-translation" lang="ja">
+                    第二十回日本統計学会春季集会ポスターセッション
+                  </span>
+                </li>
+                <li>
+                  Kansai Econometrics Workshop, January 2026.
+                  <span className="plain-translation" lang="ja">
+                    関西計量経済学研究会
+                  </span>
+                </li>
+                <li>LMU-Todai Econometrics Workshop, December 2025.</li>
+                <li>
+                  Summer Seminar on Statistics, August 2025.
+                  <span className="plain-translation" lang="ja">
+                    統計サマーセミナー
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <section id="teaching">
+              <h2>Teaching</h2>
+              <ul>
+                <li>
+                  Econometrics I (Undergraduate), The University of Tokyo, Fall
+                  2025
+                </li>
+              </ul>
+            </section>
+
+            <section id="awards">
+              <h2>Awards</h2>
+              <ul>
+                <li>
+                  Best Presentation Award, 20th Spring Meeting of the Japan
+                  Statistical Society, Poster Session, March 2026.
+                  <span className="plain-translation" lang="ja">
+                    優秀発表賞（第二十回日本統計学会春季集会ポスターセッション）{" "}
+                    <a
+                      href="https://www.jss.gr.jp/wp-content/uploads/20th-shunki-houkoku_0313.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      受賞のことば
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  Best Paper Award, 2026 Asian Summer School in Econometrics and
+                  Statistics, July 2026. [
+                  <a
+                    href="https://conf.xmu.edu.cn/summerschool2026/Program.htm"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Program
+                  </a>
+                  ,{" "}
+                  <a
+                    href="https://www.e.u-tokyo.ac.jp/news/2026/20260722Awards.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    経済学研究科ニュース
+                  </a>
+                  ]
+                </li>
+              </ul>
+            </section>
+
+            <section id="grants">
+              <h2>Grants</h2>
+              <ul>
+                <li>
+                  <a
+                    href="https://www.ms.u-tokyo.ac.jp/wings-fmsp/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    World-leading Innovative Graduate Study for Frontiers of
+                    Mathematical Sciences and Physics
+                  </a>
+                  , The University of Tokyo, October 2025 – Present
+                  <span className="plain-translation" lang="ja">
+                    数物フロンティア国際卓越大学院, 東京大学
+                  </span>
+                </li>
+                <li>
+                  <a
+                    href="https://www.miurazaidan.or.jp/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Miura Foundation Scholarship
+                  </a>
+                  , April 2020 – March 2024
+                  <span className="plain-translation" lang="ja">
+                    公益財団法人三浦財団
+                  </span>
+                </li>
+              </ul>
+            </section>
+
+            <section id="contact">
+              <h2>Contact</h2>
+              <p>
+                Email:{" "}
+                <a href="mailto:kawato-kentaro380@g.ecc.u-tokyo.ac.jp">
+                  kawato-kentaro380@g.ecc.u-tokyo.ac.jp
+                </a>
+              </p>
+            </section>
+          </article>
+        </div>
+      </main>
+
+      <footer className="plain-footer">
+        <p>© 2026 Kentaro Kawato</p>
+      </footer>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+    </>
+  );
+}
+
+export function LegacyHomepage() {
+  return (
+    <>
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>

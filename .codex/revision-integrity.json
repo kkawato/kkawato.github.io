@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "project_root": "/Users/kawatokentaryuu/kentaro-kawato-website",
+  "source_ledger": null,
+  "targets": [
+    "app/page.tsx",
+    "app/globals.css",
+    "app/layout.tsx",
+    "app/robots.ts",
+    "app/sitemap.ts",
+    "tests/rendered-html.test.mjs"
+  ],
+  "decisions": [
+    {
+      "decision_id": "decision-20260817-preserve-added-links",
+      "instruction_id": "prior-additions-20260817",
+      "status": "active",
+      "description": "Preserve the requested Miura Foundation, WINGS-FMSP, and JFSSA 2026 presentation links in later revisions.",
+      "targets": [
+        "app/page.tsx"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "https://www.miurazaidan.or.jp/",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "https://www.ms.u-tokyo.ac.jp/wings-fmsp/",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "https://pub.confit.atlas.jp/ja/event/jfssa2026/session/t2K1Gt85",
+          "min_count": 1
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260817-private-preview",
+      "instruction_id": "prior-private-preview-20260817",
+      "status": "active",
+      "description": "Keep the GitHub preview private and do not add a public GitHub Pages deployment until explicitly requested.",
+      "targets": [
+        ".github/workflows",
+        "public/CNAME"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "file_absent",
+          "path": "public/CNAME"
+        },
+        {
+          "type": "file_absent",
+          "path": ".github/workflows/deploy.yml"
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-simple-academic-layout",
+      "instruction_id": "request-20260827-simple-design",
+      "status": "active",
+      "description": "Keep the visible homepage as a restrained white academic page without cards, ornamental numbering, large CTA blocks, or decorative backgrounds unless the user explicitly requests a new direction.",
+      "targets": [
+        "app/page.tsx",
+        "app/globals.css",
+        "tests/rendered-html.test.mjs"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "className=\"plain-page\"",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/globals.css",
+          "literal": "/* Minimal academic layout used by the current homepage. */",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "tests/rendered-html.test.mjs",
+          "literal": "paper-card|activity-card|award-chip|section-number|hero-actions|contact-section",
+          "min_count": 1
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-faithful-google-sites-content",
+      "instruction_id": "request-20260827-faithful-migration",
+      "status": "active",
+      "description": "Preserve the Google Sites section order and factual content, together with the three later requested links, when revising the homepage.",
+      "targets": [
+        "app/page.tsx",
+        "tests/rendered-html.test.mjs"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "regex_present",
+          "path": "app/page.tsx",
+          "regex": "Education[\\s\\S]*Working Papers[\\s\\S]*Work in Progress[\\s\\S]*Presentations[\\s\\S]*Teaching[\\s\\S]*Awards[\\s\\S]*Grants[\\s\\S]*Contact",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "kawato-kentaro380@g.ecc.u-tokyo.ac.jp",
+          "min_count": 1
+        }
+      ]
+    }
+  ]
+}
