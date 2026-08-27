@@ -71,9 +71,10 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 
-test("keeps SEO and image assets in the committed project", async () => {
-  const [page, layout, packageJson, profile, socialCard] = await Promise.all([
+test("keeps SEO, visible numbering, and image assets in the committed project", async () => {
+  const [page, styles, layout, packageJson, profile, socialCard] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
     access(new URL("../public/kentaro-kawato.jpg", import.meta.url)),
@@ -88,6 +89,10 @@ test("keeps SEO and image assets in the committed project", async () => {
     6,
   );
   assert.doesNotMatch(page, /コンペティション\(1\)|14:00–14:20/);
+  assert.match(
+    styles,
+    /\.plain-content ol\.numbered-list\s*\{[^}]*list-style-type:\s*decimal;/s,
+  );
   assert.match(layout, /robots:/);
   assert.match(layout, /canonical:/);
   assert.match(layout, /summary_large_image/);

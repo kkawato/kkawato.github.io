@@ -152,7 +152,8 @@
       "status": "active",
       "description": "Keep Working Papers, Work in Progress, Presentations, Teaching, Awards, and Grants as numbered lists while Education remains bulleted.",
       "targets": [
-        "app/page.tsx"
+        "app/page.tsx",
+        "app/globals.css"
       ],
       "supersedes": [],
       "superseded_by": [],
@@ -163,6 +164,13 @@
           "pattern": "<ol className=\"(?:plain-publication-list )?numbered-list\">",
           "min_count": 6,
           "max_count": 6
+        },
+        {
+          "type": "literal_present",
+          "path": "app/globals.css",
+          "literal": ".plain-content ol.numbered-list {\n  list-style-type: decimal;\n}",
+          "min_count": 1,
+          "max_count": 1
         }
       ]
     }

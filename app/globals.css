@@ -1122,6 +1122,10 @@ body::before {
   padding-left: 1.4rem;
 }
 
+.plain-content ol.numbered-list {
+  list-style-type: decimal;
+}
+
 .plain-content li + li {
   margin-top: 0.55rem;
 }
