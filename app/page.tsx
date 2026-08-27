@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://kentaro-kawato.kentaro1358nohe.chatgpt.site";
+  "https://kkawato.github.io";
 
 const presentations = [
   {
@@ -126,6 +126,7 @@ export default function Home() {
               width={240}
               height={240}
               priority
+              unoptimized
               sizes="(max-width: 720px) 180px, 210px"
             />
           </aside>

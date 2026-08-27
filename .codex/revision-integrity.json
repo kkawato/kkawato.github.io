@@ -8,7 +8,13 @@
     "app/layout.tsx",
     "app/robots.ts",
     "app/sitemap.ts",
-    "tests/rendered-html.test.mjs"
+    "tests/rendered-html.test.mjs",
+    "tests/static-export.test.mjs",
+    "vite.config.ts",
+    "package.json",
+    "scripts/export-static.mjs",
+    ".github/workflows/deploy-pages.yml",
+    ".openai/hosting.json"
   ],
   "decisions": [
     {
@@ -249,7 +255,7 @@
     {
       "decision_id": "decision-20260827-public-sites-private-github",
       "instruction_id": "request-20260827-public-sites-private-github",
-      "status": "active",
+      "status": "superseded",
       "description": "Keep the GitHub source repository private while publishing the website publicly through Sites; do not add GitHub Pages deployment artifacts.",
       "targets": [
         ".openai/hosting.json",
@@ -259,7 +265,9 @@
       "supersedes": [
         "decision-20260817-private-preview"
       ],
-      "superseded_by": [],
+      "superseded_by": [
+        "request-20260827-public-github-pages"
+      ],
       "guards": [
         {
           "type": "file_exists",
@@ -306,7 +314,7 @@
     {
       "decision_id": "decision-20260827-sites-canonical-url",
       "instruction_id": "request-20260827-switch-seo-to-sites-url",
-      "status": "active",
+      "status": "superseded",
       "description": "Use the deployed Sites origin as the canonical website URL in metadata, structured data, robots, sitemap, and regression tests.",
       "targets": [
         "app/page.tsx",
@@ -316,7 +324,9 @@
         "tests/rendered-html.test.mjs"
       ],
       "supersedes": [],
-      "superseded_by": [],
+      "superseded_by": [
+        "request-20260827-github-canonical-url"
+      ],
       "guards": [
         {
           "type": "literal_present",
@@ -369,6 +379,103 @@
           "pattern": "Japanese Joint Statistical Meeting 2026[\\s\\S]{0,400}<span className=\\\"plain-translation\\\" lang=\\\"ja\\\">[\\s\\S]{0,100}2026年度統計関連学会連合大会",
           "min_count": 1,
           "max_count": 1
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-public-github-pages",
+      "instruction_id": "request-20260827-public-github-pages",
+      "status": "active",
+      "description": "Publish the homepage from a public kkawato.github.io repository with GitHub Pages while retaining the prior Sites project metadata solely for reversible owner-only access.",
+      "targets": [
+        ".openai/hosting.json",
+        ".github/workflows/deploy-pages.yml",
+        "scripts/export-static.mjs",
+        "tests/static-export.test.mjs"
+      ],
+      "supersedes": [
+        "decision-20260827-public-sites-private-github"
+      ],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "file_exists",
+          "path": ".openai/hosting.json"
+        },
+        {
+          "type": "literal_present",
+          "path": ".openai/hosting.json",
+          "literal": "\"project_id\": \"appgprj_6a8fb4f609888191a2bf2a0db0588037\"",
+          "min_count": 1,
+          "max_count": 1
+        },
+        {
+          "type": "file_exists",
+          "path": ".github/workflows/deploy-pages.yml"
+        },
+        {
+          "type": "file_exists",
+          "path": "scripts/export-static.mjs"
+        },
+        {
+          "type": "file_exists",
+          "path": "tests/static-export.test.mjs"
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-github-canonical-url",
+      "instruction_id": "request-20260827-github-canonical-url",
+      "status": "active",
+      "description": "Use https://kkawato.github.io as the canonical website origin across metadata, structured data, robots, sitemap, and regression tests.",
+      "targets": [
+        "app/page.tsx",
+        "app/layout.tsx",
+        "app/robots.ts",
+        "app/sitemap.ts",
+        "tests/rendered-html.test.mjs",
+        "tests/static-export.test.mjs"
+      ],
+      "supersedes": [
+        "decision-20260827-sites-canonical-url"
+      ],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "https://kkawato.github.io",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/layout.tsx",
+          "literal": "https://kkawato.github.io",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/robots.ts",
+          "literal": "https://kkawato.github.io",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/sitemap.ts",
+          "literal": "https://kkawato.github.io",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "tests/rendered-html.test.mjs",
+          "literal": "https://kkawato.github.io",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "tests/static-export.test.mjs",
+          "literal": "https://kkawato.github.io",
+          "min_count": 1
         }
       ]
     }

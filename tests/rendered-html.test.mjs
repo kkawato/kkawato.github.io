@@ -3,7 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const publicSiteUrl =
-  "https://kentaro-kawato.kentaro1358nohe.chatgpt.site";
+  "https://kkawato.github.io";
 
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -104,6 +104,8 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /"@type":"Person"/);
   assert.ok(html.includes(`"url":"${publicSiteUrl}"`));
   assert.match(html, /og:image/i);
+  assert.doesNotMatch(html, /\/_next\/image\?/);
+  assert.match(html, /src="\/kentaro-kawato\.jpg"/);
   assert.ok(
     html.includes(`<link rel="canonical" href="${publicSiteUrl}"`),
   );
@@ -119,7 +121,7 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 
-test("publishes crawlable robots and sitemap records for the Sites URL", async () => {
+test("publishes crawlable robots and sitemap records for the GitHub Pages URL", async () => {
   const [robotsResponse, sitemapResponse] = await Promise.all([
     render("/robots.txt"),
     render("/sitemap.xml"),
