@@ -343,6 +343,34 @@
           "min_count": 1
         }
       ]
+    },
+    {
+      "decision_id": "decision-20260827-jfssa-english-japanese-subline",
+      "instruction_id": "request-20260827-jfssa-english-japanese-subline",
+      "status": "active",
+      "description": "Keep the JFSSA 2026 presentation title in English as Japanese Joint Statistical Meeting 2026, with the Japanese event name directly below in the existing muted translation style.",
+      "targets": [
+        "app/page.tsx",
+        "tests/rendered-html.test.mjs"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "Japanese Joint Statistical Meeting 2026",
+          "min_count": 2,
+          "max_count": 2
+        },
+        {
+          "type": "regex_present",
+          "path": "app/page.tsx",
+          "pattern": "Japanese Joint Statistical Meeting 2026[\\s\\S]{0,400}<span className=\\\"plain-translation\\\" lang=\\\"ja\\\">[\\s\\S]{0,100}2026年度統計関連学会連合大会",
+          "min_count": 1,
+          "max_count": 1
+        }
+      ]
     }
   ]
 }

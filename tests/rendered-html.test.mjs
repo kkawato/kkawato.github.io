@@ -42,7 +42,11 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /Prior-Free Sample Size Design for Test-and-Roll Experiments/);
   assert.match(html, /Nonlinear Difference in Difference for Manifold Data/);
   assert.match(html, /Adaptive Experiment for Estimating Long-term Treatment Effect/);
-  assert.match(html, /2026年度統計関連学会連合大会/);
+  assert.match(html, /Japanese Joint Statistical Meeting 2026/);
+  assert.match(
+    html,
+    /Japanese Joint Statistical Meeting 2026[\s\S]{0,400}<span class="plain-translation" lang="ja">2026年度統計関連学会連合大会<\/span>/,
+  );
   assert.match(html, /Summer Workshop on Economic Theory/);
   assert.match(
     html,
