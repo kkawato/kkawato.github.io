@@ -2,6 +2,9 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
+const publicSiteUrl =
+  "https://kentaro-kawato.kentaro1358nohe.chatgpt.site";
+
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -41,7 +44,14 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /Adaptive Experiment for Estimating Long-term Treatment Effect/);
   assert.match(html, /2026年度統計関連学会連合大会/);
   assert.match(html, /Summer Workshop on Economic Theory/);
-  assert.match(html, /Econometrics I \(Undergraduate\)/);
+  assert.match(
+    html,
+    /Teaching Assistant, Econometrics I \(Undergraduate\), The University of Tokyo, Fall 2025/,
+  );
+  assert.doesNotMatch(
+    html,
+    /<li>Econometrics I \(Undergraduate\), The University of Tokyo, Fall 2025<\/li>/,
+  );
   assert.match(html, /Best Presentation Award/);
   assert.match(html, /Best Paper Award/);
   assert.match(
@@ -88,8 +98,16 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.doesNotMatch(html, /コンペティション\(1\)|14:00(?:–|&ndash;)14:20/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /"@type":"Person"/);
+  assert.ok(html.includes(`"url":"${publicSiteUrl}"`));
   assert.match(html, /og:image/i);
-  assert.match(html, /rel="canonical"/i);
+  assert.ok(
+    html.includes(`<link rel="canonical" href="${publicSiteUrl}"`),
+  );
+  assert.ok(
+    html.includes(
+      `<meta property="og:image" content="${publicSiteUrl}/og.png"`,
+    ),
+  );
   assert.doesNotMatch(
     html,
     /paper-card|activity-card|award-chip|section-number|hero-actions|contact-section/,
@@ -97,11 +115,33 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 
+test("publishes crawlable robots and sitemap records for the Sites URL", async () => {
+  const [robotsResponse, sitemapResponse] = await Promise.all([
+    render("/robots.txt"),
+    render("/sitemap.xml"),
+  ]);
+
+  assert.equal(robotsResponse.status, 200);
+  assert.equal(sitemapResponse.status, 200);
+
+  const [robots, sitemap] = await Promise.all([
+    robotsResponse.text(),
+    sitemapResponse.text(),
+  ]);
+  assert.match(robots, /Allow: \//);
+  assert.ok(robots.includes(`Sitemap: ${publicSiteUrl}/sitemap.xml`));
+  assert.ok(sitemap.includes(`<loc>${publicSiteUrl}</loc>`));
+  assert.doesNotMatch(robots, /sites\.google\.com\/view\/kentaro-kawato/);
+  assert.doesNotMatch(sitemap, /sites\.google\.com\/view\/kentaro-kawato/);
+});
+
 test("keeps SEO, visible numbering, and image assets in the committed project", async () => {
-  const [page, styles, layout, packageJson, profile, socialCard] = await Promise.all([
+  const [page, styles, layout, robots, sitemap, packageJson, profile, socialCard] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/robots.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/sitemap.ts", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
     access(new URL("../public/kentaro-kawato.jpg", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
@@ -137,6 +177,10 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
   );
   assert.match(layout, /robots:/);
   assert.match(layout, /canonical:/);
+  assert.ok(layout.includes(publicSiteUrl));
+  assert.ok(page.includes(publicSiteUrl));
+  assert.ok(robots.includes(publicSiteUrl));
+  assert.ok(sitemap.includes(publicSiteUrl));
   assert.match(layout, /summary_large_image/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.equal(profile, undefined);

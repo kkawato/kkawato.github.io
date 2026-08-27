@@ -45,14 +45,16 @@
     {
       "decision_id": "decision-20260817-private-preview",
       "instruction_id": "prior-private-preview-20260817",
-      "status": "active",
+      "status": "superseded",
       "description": "Keep the GitHub preview private and do not add a public GitHub Pages deployment until explicitly requested.",
       "targets": [
         ".github/workflows",
         "public/CNAME"
       ],
       "supersedes": [],
-      "superseded_by": [],
+      "superseded_by": [
+        "request-20260827-public-sites-private-github"
+      ],
       "guards": [
         {
           "type": "file_absent",
@@ -240,6 +242,104 @@
           "type": "regex_present",
           "path": "app/page.tsx",
           "pattern": "Kentaro Kawato and Shosei Sakaguchi[\\s\\S]{0,1200}<strong>Keywords:</strong>[\\s\\S]{0,600}<strong>Awards:</strong>",
+          "min_count": 1
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-public-sites-private-github",
+      "instruction_id": "request-20260827-public-sites-private-github",
+      "status": "active",
+      "description": "Keep the GitHub source repository private while publishing the website publicly through Sites; do not add GitHub Pages deployment artifacts.",
+      "targets": [
+        ".openai/hosting.json",
+        ".github/workflows",
+        "public/CNAME"
+      ],
+      "supersedes": [
+        "decision-20260817-private-preview"
+      ],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "file_exists",
+          "path": ".openai/hosting.json"
+        },
+        {
+          "type": "literal_present",
+          "path": ".openai/hosting.json",
+          "literal": "\"project_id\": \"appgprj_6a8fb4f609888191a2bf2a0db0588037\"",
+          "min_count": 1,
+          "max_count": 1
+        },
+        {
+          "type": "file_absent",
+          "path": "public/CNAME"
+        },
+        {
+          "type": "file_absent",
+          "path": ".github/workflows/deploy.yml"
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-teaching-assistant-label",
+      "instruction_id": "request-20260827-teaching-assistant-label",
+      "status": "active",
+      "description": "Identify the Econometrics I role explicitly as Teaching Assistant rather than implying instructor responsibility.",
+      "targets": [
+        "app/page.tsx",
+        "tests/rendered-html.test.mjs"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "Teaching Assistant, Econometrics I (Undergraduate), The",
+          "min_count": 1,
+          "max_count": 1
+        }
+      ]
+    },
+    {
+      "decision_id": "decision-20260827-sites-canonical-url",
+      "instruction_id": "request-20260827-switch-seo-to-sites-url",
+      "status": "active",
+      "description": "Use the deployed Sites origin as the canonical website URL in metadata, structured data, robots, sitemap, and regression tests.",
+      "targets": [
+        "app/page.tsx",
+        "app/layout.tsx",
+        "app/robots.ts",
+        "app/sitemap.ts",
+        "tests/rendered-html.test.mjs"
+      ],
+      "supersedes": [],
+      "superseded_by": [],
+      "guards": [
+        {
+          "type": "literal_present",
+          "path": "app/page.tsx",
+          "literal": "https://kentaro-kawato.kentaro1358nohe.chatgpt.site",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/layout.tsx",
+          "literal": "https://kentaro-kawato.kentaro1358nohe.chatgpt.site",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/robots.ts",
+          "literal": "https://kentaro-kawato.kentaro1358nohe.chatgpt.site",
+          "min_count": 1
+        },
+        {
+          "type": "literal_present",
+          "path": "app/sitemap.ts",
+          "literal": "https://kentaro-kawato.kentaro1358nohe.chatgpt.site",
           "min_count": 1
         }
       ]

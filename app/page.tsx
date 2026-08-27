@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://sites.google.com/view/kentaro-kawato";
+  "https://kentaro-kawato.kentaro1358nohe.chatgpt.site";
 
 const presentations = [
   {
@@ -327,8 +327,8 @@ export default function Home() {
               <h2>Teaching</h2>
               <ol className="numbered-list">
                 <li>
-                  Econometrics I (Undergraduate), The University of Tokyo, Fall
-                  2025
+                  Teaching Assistant, Econometrics I (Undergraduate), The
+                  University of Tokyo, Fall 2025
                 </li>
               </ol>
             </section>
@@ -756,7 +756,8 @@ export function LegacyHomepage() {
                 <p className="activity-label">Teaching</p>
                 <h3>Econometrics I</h3>
                 <p className="activity-copy">
-                  Undergraduate course, The University of Tokyo · Fall 2025
+                  Teaching Assistant · Undergraduate course, The University of
+                  Tokyo · Fall 2025
                 </p>
               </article>
 
