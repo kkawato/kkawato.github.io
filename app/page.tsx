@@ -211,6 +211,14 @@ export default function Home() {
                     Statistics.
                   </p>
                 </li>
+                <li>
+                  <p>
+                    Kentaro Kawato (2026). “Adaptive Experiments with
+                    Observational Data: Efficient Experimental Design and
+                    Anytime-Valid Inference for Long-Run Treatment Effects.”
+                    Draft available soon.
+                  </p>
+                </li>
               </ol>
             </section>
 
@@ -220,10 +228,6 @@ export default function Home() {
                 <li>
                   Nonlinear Difference in Difference for Manifold Data (with
                   Daisuke Kurisu)
-                </li>
-                <li>
-                  Adaptive Experiment for Estimating Long-term Treatment
-                  Effect
                 </li>
               </ol>
             </section>
@@ -619,7 +623,6 @@ export function LegacyHomepage() {
                 Nonlinear Difference in Difference for Manifold Data
                 <span>with Daisuke Kurisu</span>
               </li>
-              <li>Adaptive Experiment for Estimating Long-term Treatment Effect</li>
             </ul>
           </div>
         </section>
