@@ -370,7 +370,7 @@ export default function Home() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    経済学研究科ニュース
+                    News from the Graduate School of Economics
                   </a>
                   ]
                 </li>
