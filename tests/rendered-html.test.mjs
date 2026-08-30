@@ -41,7 +41,19 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /Balancing Weights for Causal Mediation Analysis/);
   assert.match(html, /Prior-Free Sample Size Design for Test-and-Roll Experiments/);
   assert.match(html, /Nonlinear Difference in Difference for Manifold Data/);
-  assert.match(html, /Adaptive Experiment for Estimating Long-term Treatment Effect/);
+  assert.match(
+    html,
+    /Adaptive Experiments with Observational Data: Efficient Experimental Design and Anytime-Valid Inference for Long-Run Treatment Effects/,
+  );
+  assert.match(html, /Draft available soon\./);
+  assert.match(
+    html,
+    /Working Papers[\s\S]{0,5000}Adaptive Experiments with Observational Data[\s\S]{0,1500}Work in Progress/,
+  );
+  assert.doesNotMatch(
+    html,
+    /Adaptive Experiment for Estimating Long-term Treatment Effect/,
+  );
   assert.match(html, /Japanese Joint Statistical Meeting 2026/);
   assert.match(
     html,
