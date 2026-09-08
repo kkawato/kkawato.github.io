@@ -59,6 +59,10 @@ test("server-renders the complete, simple academic homepage", async () => {
     html,
     /Japanese Joint Statistical Meeting 2026[\s\S]{0,400}<span class="plain-translation" lang="ja">2026年度統計関連学会連合大会<\/span>/,
   );
+  assert.doesNotMatch(
+    html,
+    /Japanese Joint Statistical Meeting 2026[\s\S]{0,400}Scheduled/,
+  );
   assert.match(html, /Summer Workshop on Economic Theory/);
   assert.match(
     html,
@@ -173,6 +177,10 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
     6,
   );
   assert.doesNotMatch(page, /コンペティション\(1\)|14:00–14:20/);
+  const jfssaStart = page.indexOf('title: "Japanese Joint Statistical Meeting 2026"');
+  const jfssaEnd = page.indexOf("},", jfssaStart);
+  assert.ok(jfssaStart >= 0 && jfssaEnd > jfssaStart);
+  assert.doesNotMatch(page.slice(jfssaStart, jfssaEnd), /Scheduled/);
   const swetStart = page.indexOf('title: "Summer Workshop on Economic Theory"');
   const swetEnd = page.indexOf("},", swetStart);
   assert.ok(swetStart >= 0 && swetEnd > swetStart);
