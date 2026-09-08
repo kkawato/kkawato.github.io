@@ -8,7 +8,6 @@ const presentations = [
   {
     date: "Sep. 7, 2026",
     title: "Japanese Joint Statistical Meeting 2026",
-    note: "Scheduled",
     location: "Japan, Yokohama",
     href: "https://pub.confit.atlas.jp/ja/event/jfssa2026/session/t2K1Gt85",
   },
@@ -243,7 +242,7 @@ export default function Home() {
                   >
                     Japanese Joint Statistical Meeting 2026
                   </a>
-                  , September 7, 2026. Japan, Yokohama. Scheduled.
+                  , September 7, 2026. Japan, Yokohama.
                   <span className="plain-translation" lang="ja">
                     2026年度統計関連学会連合大会
                   </span>
