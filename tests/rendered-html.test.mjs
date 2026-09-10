@@ -4,6 +4,8 @@ import test from "node:test";
 
 const publicSiteUrl =
   "https://kkawato.github.io";
+const competitionAwardUrl =
+  "https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition";
 
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -46,6 +48,13 @@ test("server-renders the complete, simple academic homepage", async () => {
     /Adaptive Experiments with Observational Data: Efficient Experimental Design and Anytime-Valid Inference for Long-Run Treatment Effects/,
   );
   assert.match(html, /Draft available soon\./);
+  const adaptivePaperStart = html.indexOf(
+    "Adaptive Experiments with Observational Data",
+  );
+  const adaptivePaperEnd = html.indexOf("</li>", adaptivePaperStart);
+  const adaptivePaper = html.slice(adaptivePaperStart, adaptivePaperEnd);
+  assert.match(adaptivePaper, /Excellent Paper Award/);
+  assert.ok(adaptivePaper.includes(competitionAwardUrl));
   assert.match(
     html,
     /Working Papers[\s\S]{0,5000}Adaptive Experiments with Observational Data[\s\S]{0,1500}Work in Progress/,
@@ -74,6 +83,13 @@ test("server-renders the complete, simple academic homepage", async () => {
   );
   assert.match(html, /Best Presentation Award/);
   assert.match(html, /Best Paper Award/);
+  const awardsStart = html.indexOf('<section id="awards">');
+  const awardsEnd = html.indexOf('<section id="grants">', awardsStart);
+  const awardsSection = html.slice(awardsStart, awardsEnd);
+  assert.match(awardsSection, /Excellent Paper Award/);
+  assert.match(awardsSection, /優秀報告賞/);
+  assert.ok(awardsSection.includes(competitionAwardUrl));
+  assert.ok(html.split(competitionAwardUrl).length - 1 >= 2);
   assert.match(
     html,
     /World-leading Innovative Graduate Study for Frontiers of Mathematical Sciences and Physics/,
@@ -197,6 +213,16 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
     secondPaper.indexOf("<strong>Keywords:</strong>") <
       secondPaper.indexOf("<strong>Awards:</strong>"),
   );
+  const adaptivePaperSourceStart = page.indexOf(
+    "Kentaro Kawato (2026). “Adaptive Experiments with",
+  );
+  const adaptivePaperSourceEnd = page.indexOf("</li>", adaptivePaperSourceStart);
+  const adaptivePaperSource = page.slice(
+    adaptivePaperSourceStart,
+    adaptivePaperSourceEnd,
+  );
+  assert.match(adaptivePaperSource, /Excellent Paper Award/);
+  assert.ok(adaptivePaperSource.includes(competitionAwardUrl));
   assert.match(
     styles,
     /\.plain-content ol\.numbered-list\s*\{[^}]*list-style-type:\s*decimal;/s,
