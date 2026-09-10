@@ -52,6 +52,69 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Clear orphaned Pages deployment
+        if: ${{ github.event_name == 'push' && github.event.head_commit.message == 'Recover GitHub Pages deployment' }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          STALE_PAGES_DEPLOYMENT_ID: 5130721a4f9f499661ddcadc5174f1cb1693a0d1
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          api_version="2026-03-10"
+          deployment_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/${STALE_PAGES_DEPLOYMENT_ID}"
+          cancel_code="$(
+            curl --silent --show-error \
+              --output /tmp/pages-cancel-response.json \
+              --write-out "%{http_code}" \
+              --request POST \
+              --header "Accept: application/vnd.github+json" \
+              --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+              --header "X-GitHub-Api-Version: ${api_version}" \
+              "${deployment_url}/cancel"
+          )"
+
+          if [[ "${cancel_code}" != "204" && "${cancel_code}" != "404" ]]; then
+            cat /tmp/pages-cancel-response.json
+            echo "::error::Failed to cancel stale Pages deployment (HTTP ${cancel_code})."
+            exit 1
+          fi
+
+          for attempt in {1..24}; do
+            status_code="$(
+              curl --silent --show-error \
+                --output /tmp/pages-status-response.json \
+                --write-out "%{http_code}" \
+                --header "Accept: application/vnd.github+json" \
+                --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+                --header "X-GitHub-Api-Version: ${api_version}" \
+                "${deployment_url}"
+            )"
+
+            if [[ "${status_code}" == "404" ]]; then
+              echo "Stale Pages deployment is no longer present."
+              exit 0
+            fi
+
+            if [[ "${status_code}" != "200" ]]; then
+              cat /tmp/pages-status-response.json
+              echo "::error::Failed to read stale Pages deployment status (HTTP ${status_code})."
+              exit 1
+            fi
+
+            status="$(jq --raw-output '.status // empty' /tmp/pages-status-response.json)"
+            if [[ "${status}" != "updating_pages" ]]; then
+              echo "Stale Pages deployment released with status: ${status:-unknown}"
+              exit 0
+            fi
+
+            echo "Stale Pages deployment is still updating (attempt ${attempt}/24)."
+            sleep 5
+          done
+
+          echo "::error::Stale Pages deployment remained active after two minutes."
+          exit 1
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
