@@ -217,6 +217,17 @@ export default function Home() {
                     Anytime-Valid Inference for Long-Run Treatment Effects.”
                     Draft available soon.
                   </p>
+                  <p>
+                    <strong>Awards:</strong>{" "}
+                    <a
+                      href="https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Excellent Paper Award
+                    </a>
+                    , Competition Session, JFSSA 2026.
+                  </p>
                 </li>
               </ol>
             </section>
@@ -376,6 +387,20 @@ export default function Home() {
                     News from the Graduate School of Economics
                   </a>
                   ]
+                </li>
+                <li>
+                  <a
+                    href="https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Excellent Paper Award
+                  </a>
+                  , Competition Session, JFSSA 2026, September 2026.
+                  <span className="plain-translation" lang="ja">
+                    優秀報告賞（2026年度統計関連学会連合大会
+                    コンペティションセッション）
+                  </span>
                 </li>
               </ol>
             </section>
