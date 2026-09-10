@@ -54,6 +54,10 @@ test("server-renders the complete, simple academic homepage", async () => {
   const adaptivePaperEnd = html.indexOf("</li>", adaptivePaperStart);
   const adaptivePaper = html.slice(adaptivePaperStart, adaptivePaperEnd);
   assert.match(adaptivePaper, /Excellent Paper Award/);
+  assert.match(
+    adaptivePaper,
+    /Competition Session, Japanese Joint Statistical Meeting 2026\./,
+  );
   assert.ok(adaptivePaper.includes(competitionAwardUrl));
   assert.match(
     html,
@@ -87,9 +91,14 @@ test("server-renders the complete, simple academic homepage", async () => {
   const awardsEnd = html.indexOf('<section id="grants">', awardsStart);
   const awardsSection = html.slice(awardsStart, awardsEnd);
   assert.match(awardsSection, /Excellent Paper Award/);
+  assert.match(
+    awardsSection,
+    /Competition Session, Japanese Joint Statistical Meeting 2026, September 2026\./,
+  );
   assert.match(awardsSection, /優秀報告賞/);
   assert.ok(awardsSection.includes(competitionAwardUrl));
   assert.ok(html.split(competitionAwardUrl).length - 1 >= 2);
+  assert.doesNotMatch(html, /JFSSA 2026/);
   assert.match(
     html,
     /World-leading Innovative Graduate Study for Frontiers of Mathematical Sciences and Physics/,
