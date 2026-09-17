@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Kentaro Kawato",
   },
   description:
-    "Kentaro Kawato is an economics M.A. student at the University of Tokyo researching econometrics, statistics, causal inference, and experimental design.",
+    "Kentaro Kawato is a Master's student in economics at the University of Tokyo researching econometrics, statistics, causal inference, and experimental design.",
   applicationName: "Kentaro Kawato — Academic Homepage",
   authors: [{ name: "Kentaro Kawato", url: siteUrl }],
   creator: "Kentaro Kawato",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     url: "/",
     title: "Kentaro Kawato | Econometrics & Statistics",
     description:
-      "Academic homepage of Kentaro Kawato, M.A. student at the University of Tokyo.",
+      "Academic homepage of Kentaro Kawato, a Master's student at the University of Tokyo.",
     siteName: "Kentaro Kawato",
     locale: "en_US",
     alternateLocale: ["ja_JP"],

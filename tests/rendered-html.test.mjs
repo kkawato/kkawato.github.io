@@ -43,7 +43,8 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /<title>Kentaro Kawato \| Econometrics &amp; Statistics<\/title>/i);
   assert.match(html, /川戸 健太竜/);
   assert.match(html, /Graduate School of Economics/);
-  assert.match(html, /M\.A\. Student in Economics \(Statistics Course\)/);
+  assert.match(html, /Master(?:&#x27;|&apos;|')s Student in Economics \(Statistics Course\)/);
+  assert.doesNotMatch(html, /M\.A\. Student|M\.A\. student/);
   assert.match(html, /B\.A\. in Social Sciences/);
   assert.match(html, /University of Manchester/);
   assert.match(
@@ -230,6 +231,10 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
 
   assert.match(page, /https:\/\/schema\.org/);
   assert.match(page, /"@type": "Person"/);
+  assert.match(page, /Master's Student in Economics \(Statistics Course\)/);
+  assert.doesNotMatch(page, /M\.A\. Student|M\.A\. student/);
+  assert.match(layout, /Master's student/);
+  assert.doesNotMatch(layout, /M\.A\. Student|M\.A\. student/);
   assert.ok(page.includes(googleScholarUrl));
   assert.ok(page.includes(ryoOkuiUrl));
   assert.ok(page.includes(toruKitagawaUrl));

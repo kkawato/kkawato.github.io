@@ -64,7 +64,7 @@ const personSchema = {
   url: siteUrl,
   image: `${siteUrl}/kentaro-kawato.jpg`,
   email: "mailto:kawato-kentaro380@g.ecc.u-tokyo.ac.jp",
-  jobTitle: "M.A. Student in Economics (Statistics Course)",
+  jobTitle: "Master's Student in Economics (Statistics Course)",
   affiliation: {
     "@type": "CollegeOrUniversity",
     name: "The University of Tokyo",
@@ -137,7 +137,7 @@ export default function Home() {
               <p className="plain-japanese-name" lang="ja">
                 <strong>川戸 健太竜</strong>
               </p>
-              <p>M.A. Student in Economics (Statistics Course)</p>
+              <p>Master&apos;s Student in Economics (Statistics Course)</p>
               <p>
                 Graduate School of Economics, The University of Tokyo, Tokyo,
                 Japan
@@ -539,7 +539,7 @@ export function LegacyHomepage() {
               川戸 健太竜
             </p>
             <p className="hero-lede">
-              I am an M.A. student in the Statistics Course at the Graduate
+              I am a Master&apos;s student in the Statistics Course at the Graduate
               School of Economics, The University of Tokyo. My research lies
               at the intersection of econometrics, statistics, causal
               inference, and experimental design.
