@@ -12,6 +12,8 @@ const ryoOkuiUrl =
   "https://sites.google.com/site/okuiryoeconomics/home?authuser=0";
 const toruKitagawaUrl =
   "https://sites.google.com/brown.edu/torukitagawa";
+const statisticsCourseUrl =
+  "https://www.stat.e.u-tokyo.ac.jp/index.html";
 
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -43,7 +45,11 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /<title>Kentaro Kawato \| Econometrics &amp; Statistics<\/title>/i);
   assert.match(html, /川戸 健太竜/);
   assert.match(html, /Graduate School of Economics/);
-  assert.match(html, /Master(?:&#x27;|&apos;|')s Student in Economics \(Statistics Course\)/);
+  assert.match(
+    html,
+    /Master(?:&#x27;|&apos;|')s Student in Economics \(<a href="https:\/\/www\.stat\.e\.u-tokyo\.ac\.jp\/index\.html" target="_blank" rel="noreferrer">Statistics Course<\/a>\)/,
+  );
+  assert.ok(html.includes(statisticsCourseUrl));
   assert.doesNotMatch(html, /M\.A\. Student|M\.A\. student/);
   assert.match(html, /B\.A\. in Social Sciences/);
   assert.match(html, /University of Manchester/);
@@ -231,7 +237,11 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
 
   assert.match(page, /https:\/\/schema\.org/);
   assert.match(page, /"@type": "Person"/);
-  assert.match(page, /Master's Student in Economics \(Statistics Course\)/);
+  assert.match(
+    page,
+    /Master&apos;s Student in Economics \(/,
+  );
+  assert.ok(page.includes(statisticsCourseUrl));
   assert.doesNotMatch(page, /M\.A\. Student|M\.A\. student/);
   assert.match(layout, /Master's student/);
   assert.doesNotMatch(layout, /M\.A\. Student|M\.A\. student/);

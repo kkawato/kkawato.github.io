@@ -137,7 +137,17 @@ export default function Home() {
               <p className="plain-japanese-name" lang="ja">
                 <strong>川戸 健太竜</strong>
               </p>
-              <p>Master&apos;s Student in Economics (Statistics Course)</p>
+              <p>
+                Master&apos;s Student in Economics (
+                <a
+                  href="https://www.stat.e.u-tokyo.ac.jp/index.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Statistics Course
+                </a>
+                )
+              </p>
               <p>
                 Graduate School of Economics, The University of Tokyo, Tokyo,
                 Japan
