@@ -6,6 +6,12 @@ const publicSiteUrl =
   "https://kkawato.github.io";
 const competitionAwardUrl =
   "https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition";
+const googleScholarUrl =
+  "https://scholar.google.com/citations?user=d3oQ8RAAAAAJ&hl=en";
+const ryoOkuiUrl =
+  "https://sites.google.com/site/okuiryoeconomics/home?authuser=0";
+const toruKitagawaUrl =
+  "https://sites.google.com/brown.edu/torukitagawa";
 
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -40,6 +46,29 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.match(html, /M\.A\. Student in Economics \(Statistics Course\)/);
   assert.match(html, /B\.A\. in Social Sciences/);
   assert.match(html, /University of Manchester/);
+  assert.match(
+    html,
+    /<strong>Advisor:<\/strong>[\s\S]{0,300}Ryo Okui/,
+  );
+  assert.ok(html.includes(ryoOkuiUrl));
+  assert.match(
+    html,
+    /href="https:\/\/sites\.google\.com\/site\/okuiryoeconomics\/home\?authuser=0" target="_blank" rel="noreferrer">Ryo Okui<\/a>/,
+  );
+  assert.match(html, /<h2>Academic Visits<\/h2>/);
+  assert.match(
+    html,
+    /Visiting Research Fellow, Brown University, March(?:–|&ndash;)April 2027\. Scheduled\./,
+  );
+  assert.match(
+    html,
+    /<strong>Hosting Supervisor:<\/strong>[\s\S]{0,300}Toru Kitagawa/,
+  );
+  assert.ok(html.includes(toruKitagawaUrl));
+  assert.match(
+    html,
+    /href="https:\/\/sites\.google\.com\/brown\.edu\/torukitagawa" target="_blank" rel="noreferrer">Toru Kitagawa<\/a>/,
+  );
   assert.match(html, /Balancing Weights for Causal Mediation Analysis/);
   assert.match(html, /Prior-Free Sample Size Design for Test-and-Roll Experiments/);
   assert.match(html, /Nonlinear Difference in Difference for Manifold Data/);
@@ -105,6 +134,11 @@ test("server-renders the complete, simple academic homepage", async () => {
   );
   assert.match(html, /Miura Foundation Scholarship/);
   assert.match(html, /kawato-kentaro380@g\.ecc\.u-tokyo\.ac\.jp/);
+  assert.match(html, />Google Scholar<\/a>/);
+  assert.ok(html.includes(googleScholarUrl));
+  assert.ok(html.includes(googleScholarUrl.replace("&", "&amp;")));
+  assert.ok(html.includes(`"sameAs":[`));
+  assert.ok(html.includes(googleScholarUrl));
   assert.match(html, /https:\/\/arxiv\.org\/abs\/2512\.09337/);
   assert.match(html, /https:\/\/arxiv\.org\/abs\/2605\.02414v1/);
   assert.match(html, /https:\/\/pub\.confit\.atlas\.jp\/ja\/event\/jfssa2026\/session\/t2K1Gt85/);
@@ -196,6 +230,10 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
 
   assert.match(page, /https:\/\/schema\.org/);
   assert.match(page, /"@type": "Person"/);
+  assert.ok(page.includes(googleScholarUrl));
+  assert.ok(page.includes(ryoOkuiUrl));
+  assert.ok(page.includes(toruKitagawaUrl));
+  assert.match(page, /<section id="education">[\s\S]*<section id="academic-visits">[\s\S]*<section id="papers">/);
   assert.equal(
     page.match(/<ol className="(?:plain-publication-list )?numbered-list">/g)
       ?.length,

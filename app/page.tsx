@@ -89,6 +89,7 @@ const personSchema = {
   sameAs: [
     "https://github.com/kkawato",
     "https://sites.google.com/view/kentaro-kawato",
+    "https://scholar.google.com/citations?user=d3oQ8RAAAAAJ&hl=en",
     "https://arxiv.org/abs/2512.09337",
     "https://arxiv.org/abs/2605.02414",
   ],
@@ -144,6 +145,16 @@ export default function Home() {
               <p>
                 <strong>Research Interests:</strong> Econometrics, Statistics
               </p>
+              <p>
+                <strong>Advisor:</strong>{" "}
+                <a
+                  href="https://sites.google.com/site/okuiryoeconomics/home?authuser=0"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ryo Okui
+                </a>
+              </p>
             </section>
 
             <section id="education">
@@ -156,6 +167,28 @@ export default function Home() {
                 <li>
                   Exchange Program: University of Manchester, Manchester, UK
                   (September 2022 – June 2023)
+                </li>
+              </ul>
+            </section>
+
+            <section id="academic-visits">
+              <h2>Academic Visits</h2>
+              <ul>
+                <li>
+                  <p>
+                    Visiting Research Fellow, Brown University, March–April
+                    2027. Scheduled.
+                  </p>
+                  <p>
+                    <strong>Hosting Supervisor:</strong>{" "}
+                    <a
+                      href="https://sites.google.com/brown.edu/torukitagawa"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Toru Kitagawa
+                    </a>
+                  </p>
                 </li>
               </ul>
             </section>
@@ -446,6 +479,15 @@ export default function Home() {
                 Email:{" "}
                 <a href="mailto:kawato-kentaro380@g.ecc.u-tokyo.ac.jp">
                   kawato-kentaro380@g.ecc.u-tokyo.ac.jp
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://scholar.google.com/citations?user=d3oQ8RAAAAAJ&hl=en"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Google Scholar
                 </a>
               </p>
             </section>
