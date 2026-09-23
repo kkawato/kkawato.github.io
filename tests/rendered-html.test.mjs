@@ -8,6 +8,8 @@ const competitionAwardUrl =
   "https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition";
 const googleScholarUrl =
   "https://scholar.google.com/citations?user=d3oQ8RAAAAAJ&hl=en";
+const xTwitterUrl =
+  "https://x.com/kkawatoo";
 const ryoOkuiUrl =
   "https://sites.google.com/site/okuiryoeconomics/home?authuser=0";
 const toruKitagawaUrl =
@@ -141,9 +143,16 @@ test("server-renders the complete, simple academic homepage", async () => {
   );
   assert.match(html, /Miura Foundation Scholarship/);
   assert.match(html, /kawato-kentaro380@g\.ecc\.u-tokyo\.ac\.jp/);
+  assert.match(html, /<h2>Contacts \/ Links<\/h2>/);
   assert.match(html, />Google Scholar<\/a>/);
   assert.ok(html.includes(googleScholarUrl));
   assert.ok(html.includes(googleScholarUrl.replace("&", "&amp;")));
+  assert.match(html, />X \/ Twitter<\/a>/);
+  assert.match(
+    html,
+    /href="https:\/\/x\.com\/kkawatoo" target="_blank" rel="noreferrer">X \/ Twitter<\/a>/,
+  );
+  assert.ok(html.includes(xTwitterUrl));
   assert.ok(html.includes(`"sameAs":[`));
   assert.ok(html.includes(googleScholarUrl));
   assert.match(html, /https:\/\/arxiv\.org\/abs\/2512\.09337/);
@@ -246,6 +255,7 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
   assert.match(layout, /Master's student/);
   assert.doesNotMatch(layout, /M\.A\. Student|M\.A\. student/);
   assert.ok(page.includes(googleScholarUrl));
+  assert.ok(page.includes(xTwitterUrl));
   assert.ok(page.includes(ryoOkuiUrl));
   assert.ok(page.includes(toruKitagawaUrl));
   assert.match(page, /<section id="education">[\s\S]*<section id="academic-visits">[\s\S]*<section id="papers">/);

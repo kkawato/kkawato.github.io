@@ -90,6 +90,7 @@ const personSchema = {
     "https://github.com/kkawato",
     "https://sites.google.com/view/kentaro-kawato",
     "https://scholar.google.com/citations?user=d3oQ8RAAAAAJ&hl=en",
+    "https://x.com/kkawatoo",
     "https://arxiv.org/abs/2512.09337",
     "https://arxiv.org/abs/2605.02414",
   ],
@@ -484,7 +485,7 @@ export default function Home() {
             </section>
 
             <section id="contact">
-              <h2>Contact</h2>
+              <h2>Contacts / Links</h2>
               <p>
                 Email:{" "}
                 <a href="mailto:kawato-kentaro380@g.ecc.u-tokyo.ac.jp">
@@ -498,6 +499,15 @@ export default function Home() {
                   rel="noreferrer"
                 >
                   Google Scholar
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://x.com/kkawatoo"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  X / Twitter
                 </a>
               </p>
             </section>
