@@ -12,8 +12,6 @@ const xTwitterUrl =
   "https://x.com/kkawatoo";
 const ryoOkuiUrl =
   "https://sites.google.com/site/okuiryoeconomics/home?authuser=0";
-const toruKitagawaUrl =
-  "https://sites.google.com/brown.edu/torukitagawa";
 const statisticsCourseUrl =
   "https://www.stat.e.u-tokyo.ac.jp/index.html";
 
@@ -64,19 +62,10 @@ test("server-renders the complete, simple academic homepage", async () => {
     html,
     /href="https:\/\/sites\.google\.com\/site\/okuiryoeconomics\/home\?authuser=0" target="_blank" rel="noreferrer">Ryo Okui<\/a>/,
   );
-  assert.match(html, /<h2>Academic Visits<\/h2>/);
-  assert.match(
+  assert.doesNotMatch(html, /<section id="academic-visits">/);
+  assert.doesNotMatch(
     html,
     /Visiting Research Fellow, Brown University, March(?:–|&ndash;)April 2027\. Scheduled\./,
-  );
-  assert.match(
-    html,
-    /<strong>Hosting Supervisor:<\/strong>[\s\S]{0,300}Toru Kitagawa/,
-  );
-  assert.ok(html.includes(toruKitagawaUrl));
-  assert.match(
-    html,
-    /href="https:\/\/sites\.google\.com\/brown\.edu\/torukitagawa" target="_blank" rel="noreferrer">Toru Kitagawa<\/a>/,
   );
   assert.match(html, /Balancing Weights for Causal Mediation Analysis/);
   assert.match(html, /Prior-Free Sample Size Design for Test-and-Roll Experiments/);
@@ -257,8 +246,8 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
   assert.ok(page.includes(googleScholarUrl));
   assert.ok(page.includes(xTwitterUrl));
   assert.ok(page.includes(ryoOkuiUrl));
-  assert.ok(page.includes(toruKitagawaUrl));
-  assert.match(page, /<section id="education">[\s\S]*<section id="academic-visits">[\s\S]*<section id="papers">/);
+  assert.doesNotMatch(page, /<section id="academic-visits">/);
+  assert.match(page, /<section id="education">[\s\S]*<section id="papers">/);
   assert.equal(
     page.match(/<ol className="(?:plain-publication-list )?numbered-list">/g)
       ?.length,

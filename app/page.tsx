@@ -182,28 +182,6 @@ export default function Home() {
               </ul>
             </section>
 
-            <section id="academic-visits">
-              <h2>Academic Visits</h2>
-              <ul>
-                <li>
-                  <p>
-                    Visiting Research Fellow, Brown University, March–April
-                    2027. Scheduled.
-                  </p>
-                  <p>
-                    <strong>Hosting Supervisor:</strong>{" "}
-                    <a
-                      href="https://sites.google.com/brown.edu/torukitagawa"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Toru Kitagawa
-                    </a>
-                  </p>
-                </li>
-              </ul>
-            </section>
-
             <section id="papers">
               <h2>Working Papers</h2>
               <ol className="plain-publication-list numbered-list">
