@@ -91,8 +91,9 @@ test("server-renders the complete, simple academic homepage", async () => {
   assert.ok(adaptivePaper.includes(competitionAwardUrl));
   assert.match(
     html,
-    /Working Papers[\s\S]{0,5000}Adaptive Experiments with Observational Data[\s\S]{0,1500}Work in Progress/,
+    /Working Papers[\s\S]{0,5000}Adaptive Experiments with Observational Data[\s\S]{0,1500}Kentaro Kawato and Daisuke Kurisu \(2026\)\. “Nonlinear Difference-in-Differences for Manifold Data via Optimal Transport\.”/,
   );
+  assert.doesNotMatch(html, /Work in Progress/);
   assert.doesNotMatch(
     html,
     /Adaptive Experiment for Estimating Long-term Treatment Effect/,
@@ -254,7 +255,7 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
   assert.equal(
     page.match(/<ol className="(?:plain-publication-list )?numbered-list">/g)
       ?.length,
-    6,
+    5,
   );
   assert.doesNotMatch(page, /コンペティション\(1\)|14:00–14:20/);
   const jfssaStart = page.indexOf('title: "Japanese Joint Statistical Meeting 2026"');

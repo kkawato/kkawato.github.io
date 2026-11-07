@@ -252,23 +252,20 @@ export default function Home() {
                     2026.
                   </p>
                 </li>
-              </ol>
-            </section>
-
-            <section id="work-in-progress">
-              <h2>Work in Progress</h2>
-              <ol className="numbered-list">
                 <li>
-                  Nonlinear Difference-in-Differences for Manifold Data via
-                  Optimal Transport (with Daisuke Kurisu). [
-                  <a
-                    href="/papers/kawato-kurisu-manifold-did.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    PDF
-                  </a>
-                  ]
+                  <p>
+                    Kentaro Kawato and Daisuke Kurisu (2026). “Nonlinear
+                    Difference-in-Differences for Manifold Data via Optimal
+                    Transport.” [
+                    <a
+                      href="/papers/kawato-kurisu-manifold-did.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      PDF
+                    </a>
+                    ]
+                  </p>
                 </li>
               </ol>
             </section>
