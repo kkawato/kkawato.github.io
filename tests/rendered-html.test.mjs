@@ -69,7 +69,10 @@ test("server-renders the complete, simple academic homepage", async () => {
   );
   assert.match(html, /Balancing Weights for Causal Mediation Analysis/);
   assert.match(html, /Prior-Free Sample Size Design for Test-and-Roll Experiments/);
-  assert.match(html, /Nonlinear Difference in Difference for Manifold Data/);
+  assert.match(
+    html,
+    /Nonlinear Difference-in-Differences for Manifold Data via Optimal Transport/,
+  );
   assert.match(
     html,
     /Adaptive Experiments with Observational Data: Efficient Experimental Design and Anytime-Valid Inference for Long-Run Treatment Effects/,

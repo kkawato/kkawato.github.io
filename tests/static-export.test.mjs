@@ -12,7 +12,15 @@ test("exports a complete GitHub Pages artifact", async () => {
     access(new URL("../out/.nojekyll", import.meta.url)),
     access(new URL("../out/kentaro-kawato.jpg", import.meta.url)),
     access(new URL("../out/og.png", import.meta.url)),
+    access(
+      new URL("../out/papers/kawato-kurisu-manifold-did.pdf", import.meta.url),
+    ),
   ]);
+
+  assert.match(
+    html,
+    /href="\/papers\/kawato-kurisu-manifold-did\.pdf" target="_blank" rel="noreferrer">PDF<\/a>/,
+  );
 
   assert.ok(html.includes(`<link rel="canonical" href="${publicSiteUrl}"`));
   assert.ok(

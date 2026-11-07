@@ -259,8 +259,16 @@ export default function Home() {
               <h2>Work in Progress</h2>
               <ol className="numbered-list">
                 <li>
-                  Nonlinear Difference in Difference for Manifold Data (with
-                  Daisuke Kurisu)
+                  Nonlinear Difference-in-Differences for Manifold Data via
+                  Optimal Transport (with Daisuke Kurisu). [
+                  <a
+                    href="/papers/kawato-kurisu-manifold-did.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    PDF
+                  </a>
+                  ]
                 </li>
               </ol>
             </section>
