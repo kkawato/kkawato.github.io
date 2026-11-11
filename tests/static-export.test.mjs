@@ -19,7 +19,7 @@ test("exports a complete GitHub Pages artifact", async () => {
 
   assert.match(
     html,
-    /href="\/papers\/kawato-kurisu-manifold-did\.pdf" target="_blank" rel="noreferrer">PDF<\/a>/,
+    /href="\/papers\/kawato-kurisu-manifold-did\.pdf" target="_blank" rel="noreferrer">paper<\/a>/,
   );
 
   assert.ok(html.includes(`<link rel="canonical" href="${publicSiteUrl}"`));

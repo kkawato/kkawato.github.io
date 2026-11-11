@@ -195,7 +195,7 @@ export default function Home() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      link
+                      arxiv
                     </a>
                     ]
                   </p>
@@ -216,7 +216,7 @@ export default function Home() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      link
+                      arxiv
                     </a>
                     ]
                   </p>
@@ -240,16 +240,25 @@ export default function Home() {
                     Draft available soon.
                   </p>
                   <p>
-                    <strong>Awards:</strong>{" "}
+                    <strong>Awards:</strong> Excellent Paper Award,
+                    Competition Session, Japanese Joint Statistical Meeting
+                    2026. [
                     <a
                       href="https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Excellent Paper Award
+                      コンペティション講演セッション受賞者
                     </a>
-                    , Competition Session, Japanese Joint Statistical Meeting
-                    2026.
+                    ,{" "}
+                    <a
+                      href="https://www.jfssa.jp/wp-content/uploads/2026/2026announceFinal_261022.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      受賞のことば
+                    </a>
+                    ]
                   </p>
                 </li>
                 <li>
@@ -262,7 +271,7 @@ export default function Home() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      PDF
+                      paper
                     </a>
                     ]
                   </p>
@@ -387,6 +396,7 @@ export default function Home() {
                   Statistical Society, Poster Session, March 2026.
                   <span className="plain-translation" lang="ja">
                     優秀発表賞（第二十回日本統計学会春季集会ポスターセッション）{" "}
+                    [
                     <a
                       href="https://www.jss.gr.jp/wp-content/uploads/20th-shunki-houkoku_0313.pdf"
                       target="_blank"
@@ -394,6 +404,7 @@ export default function Home() {
                     >
                       受賞のことば
                     </a>
+                    ]
                   </span>
                 </li>
                 <li>
@@ -417,18 +428,27 @@ export default function Home() {
                   ]
                 </li>
                 <li>
-                  <a
-                    href="https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Excellent Paper Award
-                  </a>
-                  , Competition Session, Japanese Joint Statistical Meeting
-                  2026, September 2026.
+                  Excellent Paper Award, Competition Session, Japanese Joint
+                  Statistical Meeting 2026, September 2026.
                   <span className="plain-translation" lang="ja">
                     優秀報告賞（2026年度統計関連学会連合大会
-                    コンペティションセッション）
+                    コンペティションセッション） [
+                    <a
+                      href="https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      コンペティション講演セッション受賞者
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://www.jfssa.jp/wp-content/uploads/2026/2026announceFinal_261022.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      受賞のことば
+                    </a>
+                    ]
                   </span>
                 </li>
               </ol>
