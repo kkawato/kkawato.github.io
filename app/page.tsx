@@ -242,23 +242,7 @@ export default function Home() {
                   <p>
                     <strong>Awards:</strong> Excellent Paper Award,
                     Competition Session, Japanese Joint Statistical Meeting
-                    2026. [
-                    <a
-                      href="https://pub.confit.atlas.jp/ja/event/jfssa2026/content/competition"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      コンペティション講演セッション受賞者
-                    </a>
-                    ,{" "}
-                    <a
-                      href="https://www.jfssa.jp/wp-content/uploads/2026/2026announceFinal_261022.pdf"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      受賞のことば
-                    </a>
-                    ]
+                    2026.
                   </p>
                 </li>
                 <li>

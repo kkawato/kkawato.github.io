@@ -88,7 +88,7 @@ test("server-renders the complete, simple academic homepage", async () => {
     adaptivePaper,
     /Competition Session, Japanese Joint Statistical Meeting 2026\./,
   );
-  assert.ok(adaptivePaper.includes(competitionAwardUrl));
+  assert.doesNotMatch(adaptivePaper, /<a\b|\[|\]/);
   assert.match(
     html,
     /Working Papers[\s\S]{0,5000}Adaptive Experiments with Observational Data[\s\S]{0,1500}Kentaro Kawato and Daisuke Kurisu \(2026\)\. “Nonlinear Difference-in-Differences for Manifold Data via Optimal Transport\.”/,
@@ -128,7 +128,6 @@ test("server-renders the complete, simple academic homepage", async () => {
   );
   assert.match(awardsSection, /優秀報告賞/);
   assert.ok(awardsSection.includes(competitionAwardUrl));
-  assert.ok(html.split(competitionAwardUrl).length - 1 >= 2);
   assert.doesNotMatch(html, /JFSSA 2026/);
   assert.match(
     html,
@@ -287,7 +286,7 @@ test("keeps SEO, visible numbering, and image assets in the committed project", 
     adaptivePaperSourceEnd,
   );
   assert.match(adaptivePaperSource, /Excellent Paper Award/);
-  assert.ok(adaptivePaperSource.includes(competitionAwardUrl));
+  assert.doesNotMatch(adaptivePaperSource, /<a\b|\[|\]/);
   assert.match(
     styles,
     /\.plain-content ol\.numbered-list\s*\{[^}]*list-style-type:\s*decimal;/s,
