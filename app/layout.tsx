@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { sharedOpenGraph } from "./site-data";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -33,22 +34,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    type: "website",
+    ...sharedOpenGraph,
     url: "/",
     title: "Kentaro Kawato | Econometrics & Statistics",
     description:
       "Academic homepage of Kentaro Kawato, a Master's student at the University of Tokyo.",
-    siteName: "Kentaro Kawato",
-    locale: "en_US",
-    alternateLocale: ["ja_JP"],
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Kentaro Kawato — Econometrics & Statistics",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",

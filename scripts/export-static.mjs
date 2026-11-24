@@ -39,10 +39,16 @@ await cp(clientDirectory, outputDirectory, { recursive: true });
 
 for (const [pathname, destination] of [
   ["/", "index.html"],
+  ["/research", "research/index.html"],
+  ["/presentations", "presentations/index.html"],
+  ["/awards", "awards/index.html"],
+  ["/cv", "cv/index.html"],
   ["/robots.txt", "robots.txt"],
   ["/sitemap.xml", "sitemap.xml"],
 ]) {
-  await writeFile(resolve(outputDirectory, destination), await render(pathname));
+  const target = resolve(outputDirectory, destination);
+  await mkdir(dirname(target), { recursive: true });
+  await writeFile(target, await render(pathname));
 }
 
 await writeFile(resolve(outputDirectory, ".nojekyll"), "");

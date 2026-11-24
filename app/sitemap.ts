@@ -5,12 +5,37 @@ const siteUrl =
   "https://kkawato.github.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date("2026-11-25");
   return [
     {
       url: siteUrl,
-      lastModified: new Date("2026-08-27"),
+      lastModified,
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${siteUrl}/research/`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/presentations/`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/awards/`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/cv/`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 }
