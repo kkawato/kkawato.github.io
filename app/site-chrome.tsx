@@ -88,11 +88,20 @@ export function PaperAuthors({ paper }: { paper: Paper }) {
   );
 }
 
-export function PaperEntry({ paper }: { paper: Paper }) {
+export function PaperEntry({
+  paper,
+  number,
+}: {
+  paper: Paper;
+  number?: number;
+}) {
   const titleHref = paper.links[0]?.href;
   return (
     <li id={paper.id} className="plain-paper">
       <p className="plain-paper-title">
+        {number !== undefined ? (
+          <span className="plain-paper-number">{`${number}. `}</span>
+        ) : null}
         {titleHref ? (
           <ExternalLink href={titleHref}>{paper.title}</ExternalLink>
         ) : (

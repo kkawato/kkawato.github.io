@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PaperEntry, SiteFooter, SiteHeader } from "../site-chrome";
-import { activePapers, dormantPapers, sharedOpenGraph } from "../site-data";
+import { sharedOpenGraph, workingPapers } from "../site-data";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -29,23 +29,16 @@ export default function ResearchPage() {
 
           <section id="working-papers">
             <h2>Working Papers</h2>
-            <ol className="plain-publication-list">
-              {activePapers.map((paper) => (
-                <PaperEntry key={paper.id} paper={paper} />
+            <ol className="plain-publication-list" reversed>
+              {workingPapers.map((paper, index) => (
+                <PaperEntry
+                  key={paper.id}
+                  paper={paper}
+                  number={workingPapers.length - index}
+                />
               ))}
             </ol>
           </section>
-
-          {dormantPapers.length ? (
-            <section id="dormant-papers">
-              <h2>Dormant Papers</h2>
-              <ol className="plain-publication-list">
-                {dormantPapers.map((paper) => (
-                  <PaperEntry key={paper.id} paper={paper} />
-                ))}
-              </ol>
-            </section>
-          ) : null}
         </article>
       </main>
 

@@ -71,12 +71,10 @@ export type Paper = {
   summary: ReactNode[];
   // Shown after the links, e.g. what is still to come.
   note?: string;
-  // Papers that are not being actively worked on are listed separately.
-  dormant?: boolean;
 };
 
-// Papers are ordered by date of first circulation, most recent first;
-// dormant papers are listed in their own section at the bottom.
+// Papers are listed top to bottom in this order and numbered from the bottom
+// (the last entry is 1), following the author's chosen order.
 // Keywords follow the keyword line of each paper (capitalization unified).
 export const workingPapers: Paper[] = [
   {
@@ -152,32 +150,6 @@ export const workingPapers: Paper[] = [
       </>,
     ],
     note: "Supplementary material and replication code forthcoming.",
-  },
-  {
-    id: "manifold-did",
-    title:
-      "Nonlinear Difference-in-Differences for Manifold Data via Optimal Transport",
-    coauthors: [people.daisukeKurisu],
-    year: "2026",
-    status: "Working paper",
-    links: [{ label: "PDF", href: "/papers/kawato-kurisu-manifold-did.pdf" }],
-    keywords: [
-      "Nonlinear difference-in-differences",
-      "Changes-in-changes",
-      "Optimal transport",
-      "Fréchet mean",
-      "Manifold data",
-      "Compositional data",
-    ],
-    summary: [
-      <>
-        Develops manifold changes-in-changes, a difference-in-differences
-        method for outcomes on a Riemannian manifold, such as vote-share
-        compositions, that targets the untreated counterfactual distribution of
-        the treated group.
-      </>,
-    ],
-    dormant: true,
   },
   {
     id: "test-and-roll",
@@ -259,11 +231,32 @@ export const workingPapers: Paper[] = [
     ],
     note: "Replication code forthcoming.",
   },
+  {
+    id: "manifold-did",
+    title:
+      "Nonlinear Difference-in-Differences for Manifold Data via Optimal Transport",
+    coauthors: [people.daisukeKurisu],
+    year: "2026",
+    status: "Working paper",
+    links: [{ label: "PDF", href: "/papers/kawato-kurisu-manifold-did.pdf" }],
+    keywords: [
+      "Nonlinear difference-in-differences",
+      "Changes-in-changes",
+      "Optimal transport",
+      "Fréchet mean",
+      "Manifold data",
+      "Compositional data",
+    ],
+    summary: [
+      <>
+        Develops manifold changes-in-changes, a difference-in-differences
+        method for outcomes on a Riemannian manifold, such as vote-share
+        compositions, that targets the untreated counterfactual distribution of
+        the treated group.
+      </>,
+    ],
+  },
 ];
-
-export const activePapers = workingPapers.filter((paper) => !paper.dormant);
-
-export const dormantPapers = workingPapers.filter((paper) => paper.dormant);
 
 export type NewsItem = { date: string; body: ReactNode };
 

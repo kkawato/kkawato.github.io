@@ -43,7 +43,7 @@ const paperUrls = [
   "https://arxiv.org/abs/2512.09337",
 ];
 
-// Active working papers first, then the dormant paper at the bottom.
+// Listed top to bottom and numbered from the bottom (5 down to 1).
 const paperTitles = [
   "What Should an Experiment Measure? Combining a Short-Term Experiment with Confounded Observational Data to Identify Long-Term Treatment Effects",
   "Adaptive Experiments with Observational Data: Efficient Experimental Design and Asymptotic Time-Uniform Inference for Long-Term Treatment Effects",
@@ -236,14 +236,18 @@ test("server-renders the research page with current arXiv records", async () => 
     .split('class="plain-paper-summary"')
     .slice(1)
     .map((block) => block.slice(0, block.indexOf("</ul>")).match(/<li>/g)?.length);
-  // experiment-measure, adaptive, test-and-roll, balancing, manifold (dormant)
+  // experiment-measure, adaptive, test-and-roll, balancing, manifold
   assert.deepEqual(summaryCounts, [2, 2, 3, 2, 1]);
-  const dormant = sliceBetween(html, '<section id="dormant-papers">', "</article>");
-  assert.match(dormant, /<h2>Dormant Papers<\/h2>/);
-  assert.ok(dormant.includes('id="manifold-did"'));
-  assert.equal(dormant.match(/class="plain-paper"/g)?.length, 1);
-  const active = sliceBetween(html, '<section id="working-papers">', '<section id="dormant-papers">');
-  assert.doesNotMatch(active, /manifold-did/);
+  assert.doesNotMatch(html, /Dormant Papers|dormant-papers/);
+  const workingSection = sliceBetween(html, '<section id="working-papers">', "</article>");
+  assert.match(workingSection, /<ol class="plain-publication-list" reversed="">/);
+  const order = ["experiment-measure", "adaptive-observational", "test-and-roll", "balancing-mediation", "manifold-did"];
+  const positions = order.map((id) => workingSection.indexOf(`id="${id}"`));
+  assert.ok(positions.every((pos, i) => pos >= 0 && (i === 0 || pos > positions[i - 1])), "paper order");
+  order.forEach((id, i) => {
+    const entry = sliceBetween(workingSection, `id="${id}"`, "</p>");
+    assert.ok(entry.includes(`<span class="plain-paper-number">${order.length - i}. </span>`), `number for ${id}`);
+  });
   const expectedPapers = {
     "experiment-measure": {
       keywords: "Long-term treatment effects, Data combination, Experimental design, Measurement error, Proxy, Inverse problem",
@@ -350,10 +354,12 @@ test("server-renders the CV page with education, awards, and presentations", asy
   }
   assert.match(papers, /Kentaro Kawato and Shosei Sakaguchi \(2026\)/);
   assert.match(papers, /Kentaro Kawato and Daisuke Kurisu \(2026\)/);
-  const dormantHeading = papers.indexOf("<h3>Dormant Papers</h3>");
-  assert.ok(dormantHeading >= 0, "CV should have a Dormant Papers heading");
-  assert.ok(dormantHeading < papers.indexOf("Nonlinear Difference-in-Differences"));
-  assert.ok(papers.indexOf("Balancing Weights for Causal Mediation Analysis") < dormantHeading);
+  assert.doesNotMatch(papers, /Dormant Papers/);
+  assert.match(papers, /<ol class="numbered-list" reversed="">/);
+  assert.equal(papers.match(/<ol /g)?.length, 1);
+  assert.equal(papers.match(/<li>/g)?.length, 5);
+  const cvPositions = paperTitles.map((title) => papers.indexOf(title));
+  assert.ok(cvPositions.every((pos, i) => i === 0 || pos > cvPositions[i - 1]), "CV paper order");
 
   const awards = sliceBetween(html, '<section id="awards">', '<section id="grants">');
   assert.match(awards, /Competition Session, Japanese Joint Statistical Meeting 2026, September 2026\./);

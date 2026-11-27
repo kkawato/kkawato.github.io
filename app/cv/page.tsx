@@ -17,8 +17,7 @@ import {
   siteUrl,
   statisticsCourseUrl,
   upcomingPresentations,
-  activePapers,
-  dormantPapers,
+  workingPapers,
   type Paper,
   sharedOpenGraph,
 } from "../site-data";
@@ -124,21 +123,11 @@ export default function CvPage() {
 
           <section id="papers">
             <h2>Working Papers</h2>
-            <ol className="numbered-list">
-              {activePapers.map((paper) => (
+            <ol className="numbered-list" reversed>
+              {workingPapers.map((paper) => (
                 <CvPaper key={paper.id} paper={paper} />
               ))}
             </ol>
-            {dormantPapers.length ? (
-              <>
-                <h3>Dormant Papers</h3>
-                <ol className="numbered-list">
-                  {dormantPapers.map((paper) => (
-                    <CvPaper key={paper.id} paper={paper} />
-                  ))}
-                </ol>
-              </>
-            ) : null}
           </section>
 
           <section id="awards">

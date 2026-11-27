@@ -29,7 +29,9 @@ test("exports a complete GitHub Pages artifact", async () => {
   assert.ok(cv.includes(`<link rel="canonical" href="${publicSiteUrl}/cv/"`));
   assert.ok(talks.includes(`<link rel="canonical" href="${publicSiteUrl}/presentations/"`));
   assert.ok(awards.includes(`<link rel="canonical" href="${publicSiteUrl}/awards/"`));
-  assert.match(research, /<ol class="plain-publication-list">/);
+  assert.match(research, /<ol class="plain-publication-list" reversed="">/);
+  assert.match(research, /<span class="plain-paper-number">5\. <\/span>/);
+  assert.match(cv, /<ol class="numbered-list" reversed="">/);
   assert.match(cv, /<ol class="numbered-list">/);
 
   assert.ok(html.includes(`<link rel="canonical" href="${publicSiteUrl}"`));
