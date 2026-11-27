@@ -193,11 +193,6 @@ export default function Home() {
                 or Kawato (
                 <span className="plain-pronunciation">kah-wah-toh</span>).
               </p>
-              <p>
-                Thank you for visiting my homepage. Here you can find{" "}
-                <a href="/research/">my research</a> and{" "}
-                <a href="/cv/">my CV</a>.
-              </p>
             </section>
 
             {upcomingPresentations.length ? (

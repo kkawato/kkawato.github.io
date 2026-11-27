@@ -138,8 +138,7 @@ test("server-renders the short academic homepage", async () => {
   assert.match(bio, /<span class="plain-pronunciation">ken-tah-roh<\/span>/);
   assert.match(bio, /<span class="plain-pronunciation">kah-wah-toh<\/span>/);
   assert.match(bio, /Ken,/);
-  assert.match(bio, /href="\/research\/">my research<\/a>/);
-  assert.match(bio, /href="\/cv\/">my CV<\/a>/);
+  assert.doesNotMatch(bio, /Thank you for visiting my homepage/);
   const upcoming = sliceBetween(html, '<section id="upcoming">', '<section id="news">');
   assert.match(upcoming, /Dec\. 4, 2026/);
   assert.match(upcoming, />LMU-Todai Econometrics Workshop<\/a>\. Germany, Munich\./);
